@@ -51,11 +51,14 @@ The alerts observed are listed on the table of contents and we will also identif
 
 
 <h3>d. Secured Cokkies</h3>
-1. Identify
-   * Identified as Cookie Without Secure Flag
-   * Risk: Low
-   * CWE ID 614 (Sensitive Cookie in HTTPS Session Without 'Secure' Attribute)              
-   * A cookie has been set without the secure flag, which means that the cookie can be accessed via unencrypted connections.
+<h5> 1. Identify </h5>
+   - Identified as Cookie Without Secure Flag <be>
+   - Risk: Low <be>
+   - CWE ID 614 (Sensitive Cookie in HTTPS Session Without 'Secure' Attribute) <be>  
+   - WASC	ID 13 <be>
+   - A cookie has been set without the secure flag, which means that the cookie can be accessed via unencrypted connections through Set-Cookie: jtqftknonmu7j3ncqf73knu18a <be>
+<h5> 2. Evaluate: </h5>
+
   
 
 
