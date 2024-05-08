@@ -103,6 +103,13 @@ The alerts observed are listed on the table of contents and we will also identif
 
 <h3>b. Hash Disclosure</h3>
 
+# Observation Results
+
+## Hash Disclosure
+Upon conducting a detailed assessment of the Selangor State Government website, we found no instances of hash disclosure. This means that sensitive information like passwords or cryptographic hashes is not exposed. While hash disclosure vulnerabilities can be serious, potentially allowing attackers to access and manipulate sensitive data, the absence of such vulnerabilities here indicates robust security measures.
+
+## Lack of Authentication Mechanisms
+It's worth noting that the website doesn't require users to log in or authenticate themselves. While authentication is crucial for verifying users' identities and controlling access to sensitive data, its absence here suggests that the website mainly serves as an informational platform. This might increase concerns about data security, but for a public-facing website providing general information, the lack of authentication isn't necessarily a flaw.
 
 <h3>c. CSRF</h3>
 
@@ -139,7 +146,9 @@ The alerts observed are listed on the table of contents and we will also identif
 <form action="/index.php/pages/module_search" method="POST">
   <input type="hidden" name="csrf_token" value="unique_token_here">
   <button type="submit">Submit</button>
-</form>
+</form
+```
+
 <h3>d. Secured Cokkies</h3>
 <h4> Identify: </h4>
    + Identified as Cookie Without Secure Flag <be>
@@ -148,9 +157,6 @@ The alerts observed are listed on the table of contents and we will also identif
    - WASC	ID 13 <br>
    - A cookie has been set without the secure flag, which means that the cookie can be accessed via unencrypted connections through Set-Cookie: jtqftknonmu7j3ncqf73knu18a <br>
 <h4> Evaluate: </h4>
-  
-
-  
 
 
 
