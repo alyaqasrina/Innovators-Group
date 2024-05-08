@@ -54,11 +54,8 @@ The alerts observed are listed on the table of contents and we will also identif
 1. Identify
    * Identified as Cookie Without Secure Flag
    * Risk: Low
-   * CWE ID 614 (Sensitive Cookie in HTTPS Session Without 'Secure' Attribute)
-   * 
-     
-                  
-  * A cookie has been set without the secure flag, which means that the cookie can be accessed via unencrypted connections.
+   * CWE ID 614 (Sensitive Cookie in HTTPS Session Without 'Secure' Attribute)              
+   * A cookie has been set without the secure flag, which means that the cookie can be accessed via unencrypted connections.
   
 
 
