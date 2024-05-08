@@ -1,8 +1,28 @@
-# Innovators-Group
-Case Study for INFO 4345 Web Application Security
-<h3>Innovators Group</h3>
-<h5>Group Member Details</h5>
-<bold>Name: </bold><br>
-1) Nooralya Qasrina Binti Zuraimi (2118228) <br>
-2) 
-
+# Group Name
+Innovators
+# Group Members
+1. Nooralya Qasrina binti Zuraimi (2118228)
+2. Maryam
+3. Yaya
+# Assigned Tasks
+1. Nooralya Qasrina binti Zuraimi (2118228)
+   * Identify, evaluate and prevent of:
+     * Secured Cookies
+     * CSP
+     * JS Library
+     * Information Disclosure
+2. Maryam
+   *
+     *
+     *
+     *
+     *
+3. Yaya
+   *
+     *
+     *
+     *
+     *
+# Table of Contents
+1. <href>
+   
