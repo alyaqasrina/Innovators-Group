@@ -103,9 +103,7 @@ The alerts observed are listed on the table of contents and we will also identif
 
 <h3>b. Hash Disclosure</h3>
 
-# Observation Results
 
-## Hash Disclosure
 Upon conducting a detailed assessment of the Selangor State Government website, we found no instances of hash disclosure. This means that sensitive information like passwords or cryptographic hashes is not exposed. While hash disclosure vulnerabilities can be serious, potentially allowing attackers to access and manipulate sensitive data, the absence of such vulnerabilities here indicates robust security measures.
 
 ## Lack of Authentication Mechanisms
