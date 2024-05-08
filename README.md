@@ -106,7 +106,7 @@ The alerts observed are listed on the table of contents and we will also identif
 
 <h3>c. CSRF</h3>
 
-### Vulnerability 3: Lack of Anti-CSRF Tokens
+### Vulnerability : Lack of Anti-CSRF Tokens
 <img width="1005" alt="Screenshot 2024-05-09 at 2 06 47 AM" src="https://github.com/alyaqasrina/Innovators-Group/assets/78656130/4fabe023-1f63-48dd-a83b-84e42e9e7065">
 
 #### Identification:
