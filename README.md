@@ -106,7 +106,40 @@ The alerts observed are listed on the table of contents and we will also identif
 
 <h3>c. CSRF</h3>
 
+### Vulnerability 3: Lack of Anti-CSRF Tokens
+<img width="1005" alt="Screenshot 2024-05-09 at 2 06 47 AM" src="https://github.com/alyaqasrina/Innovators-Group/assets/78656130/4fabe023-1f63-48dd-a83b-84e42e9e7065">
 
+#### Identification:
+- **Description**: The absence of Anti-CSRF tokens in an HTML submission form was detected.
+- **Evidence**: An HTML form with the action `/index.php/pages/module_search` lacks Anti-CSRF tokens, making it vulnerable to CSRF attacks.
+- **Risk Assessment**: The risk associated with this vulnerability is considered medium, with confidence rated as low. CSRF attacks can manipulate authenticated users into executing unintended actions.
+- **Observation**: This vulnerability was identified passively by examining the HTML form structure.
+- **Input Vector**: CSRF attacks can exploit forms lacking Anti-CSRF tokens.
+- **Other Information**: The Common Weakness Enumeration (CWE) ID for this vulnerability is 352, and the Web Application Security Consortium (WASC) ID is 9.
+
+#### Evaluation:
+- **Potential Impact**: Without Anti-CSRF tokens, attackers can perform unauthorized actions on behalf of authenticated users.
+- **Recommendation**: Mitigate this vulnerability by integrating Anti-CSRF tokens into HTML forms. Utilize established libraries or frameworks like OWASP CSRFGuard to enhance protection. Ensure thorough scrutiny for cross-site scripting (XSS) vulnerabilities, as they can circumvent CSRF defenses.
+- **References**:
+  - [OWASP CSRF Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html)
+  - [CWE-352: Cross-Site Request Forgery (CSRF)](https://cwe.mitre.org/data/definitions/352.html)
+
+#### Prevention Measures:
+1. **Architecture and Design Phase**:
+   - Employ trusted libraries or frameworks like OWASP CSRFGuard to manage CSRF vulnerabilities.
+   - Implement the generation and validation of unique nonces for each form submission to mitigate CSRF attacks.
+   - Identify critical operations and enforce separate confirmation requests to prevent unintended actions.
+   - Utilize ESAPI Session Management control and avoid using the GET method for state-changing requests.
+2. **Implementation Phase**:
+   - Ensure the absence of XSS vulnerabilities within the application to prevent bypassing CSRF defenses.
+   - Optionally, examine the HTTP Referer header to verify the request's origin, albeit with caution as it may disrupt legitimate functionalities.
+
+#### Example Implementation:
+```html
+<form action="/index.php/pages/module_search" method="POST">
+  <input type="hidden" name="csrf_token" value="unique_token_here">
+  <button type="submit">Submit</button>
+</form>
 <h3>d. Secured Cokkies</h3>
 <h4> Identify: </h4>
    + Identified as Cookie Without Secure Flag <be>
