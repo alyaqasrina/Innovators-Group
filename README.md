@@ -41,16 +41,23 @@ Our assigned web application is the Ministry of Higher Education (MOHE) website 
 
 The alerts observed are listed on the table of contents and we will also identify the level of risk for each alert and additional information on the classification of threats (CWE or CVE).
 # Observation Results
-** a. Server OS and Server-Side Scripting used (Windows or Linux, PHP or ASP.net or JavaScript, etc) **
+<h3> ** a. Server OS and Server-Side Scripting used (Windows or Linux, PHP or ASP.net or JavaScript, etc) ** <./h3>
 
 
-** b. Hash Disclosure **
+<h3> ** b. Hash Disclosure ** </h3>
 
 
-** c. CSRF **
+<h3> ** c. CSRF ** </h3>
 
 
 <h3> ** d. Secured Cokkies ** </h3>
+** Identify:**
+  * Cookie Without Secure Flag
+  * Risk: Low 
+  * Classification of Threats: * CWE ID 614 (Sensitive Cookie in HTTPS Session Without 'Secure' Attribute)
+                               * 
+  * A cookie has been set without the secure flag, which means that the cookie can be accessed via unencrypted connections.
+  
 
 
 
