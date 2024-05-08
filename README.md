@@ -51,8 +51,8 @@ The alerts observed are listed on the table of contents and we will also identif
 
 
 <h3>d. Secured Cokkies</h3>
-** Identify:**
-  * Cookie Without Secure Flag
+1. Identify:
+* Cookie Without Secure Flag
   * Risk: Low 
   * Classification of Threats: * CWE ID 614 (Sensitive Cookie in HTTPS Session Without 'Secure' Attribute)
                                * 
