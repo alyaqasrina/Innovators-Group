@@ -96,11 +96,6 @@ The alerts observed are listed on the table of contents and we will also identif
 3. **Regularly Monitor External Dependencies**: Continuously monitor and update external scripts to mitigate the risk of compromise.
 
 
-
-
-
-
-
 <h3>b. Hash Disclosure</h3>
 
 Upon conducting a detailed assessment of the Selangor State Government website, we found no instances of hash disclosure. This means that sensitive information like passwords or cryptographic hashes is not exposed. While hash disclosure vulnerabilities can be serious, potentially allowing attackers to access and manipulate sensitive data, the absence of such vulnerabilities here indicates robust security measures.
@@ -147,13 +142,79 @@ It's worth noting that the website doesn't require users to log in or authentica
 ```
 
 <h3>d. Secured Cokkies</h3>
-<h4> Identify: </h4>
-   + Identified as Cookie Without Secure Flag <be>
-   + Risk: Low <br>
-   - CWE ID 614 (Sensitive Cookie in HTTPS Session Without 'Secure' Attribute) <br>  
-   - WASC	ID 13 <br>
-   - A cookie has been set without the secure flag, which means that the cookie can be accessed via unencrypted connections through Set-Cookie: jtqftknonmu7j3ncqf73knu18a <br>
+
+#### Identify Vulnerability:
+- Identified as Cookie Without Secure Flag <be>
+- Risk: Low <br>
+- CWE ID 614 (Sensitive Cookie in HTTPS Session Without 'Secure' Attribute) <br>  
+- WASC	ID 13 <br>
+- A cookie has been set without the secure flag, which means that the cookie can be accessed via unencrypted connections through Set-Cookie: jtqftknonmu7j3ncqf73knu18a <br>
 <h4> Evaluate: </h4>
+
+<h3>g. HTTPS Implementation (TLS/SSL)</h3>
+
+#### Identify Vulnerability:
+  + OWASP ZAP does not contain any alerts, and neither can the risk level or CWE ID be found.
+
+#### Evaluate Vulnerability:
+- **Potential Impact**:
+ Not accessible because this website has a https implementation, which is visible from the website's URL. Nevertheless, content that was originally seen using HTTPS (i.e., SSL/TLS encrypted) can also be viewed through HTTP (unencrypted).
+
+#### Prevention Measures:
+  Unavailable on the webpage. Making sure that the web server, application server, load balancer, etc. is set up to only serve such material via HTTPS is the solution to this alert, though. Think about 
+  putting HTTP Strict Transport Security into practice.
+
+<h3>Potential XSS: </h3>
+
+![image](https://github.com/alyaqasrina/Innovators-Group/assets/154775061/ddb4491c-1756-43be-b514-b6ba9cc4b93a)
+
+
+#### Identify Vulnerability:
+
+   +User Controllable HTML Element Attribute (Potential XSS)
+    -URL: https://www.selangor.gov.my/index.php/system/get_language_key
+    -Risk: Informational
+    -CWE ID: 20
+    -Passiv
+    -User-controlled HTML attribute values were found
+    - **Alert Tags**:
+        OWASP_2021_A03
+        OWASP_2017_A01
+
+#### Evaluate Vulnerability:
+- **Potential Impact**:
+- This check looks for places where particular HTML attribute values might be altered by examining user-supplied input in query string arguments and POST data.
+- This offers cross-site scripting (XSS) hotspot identification; a security analyst will need to examine this further to assess its exploitability.
+- Although there are several XSS-based attacks, they usually entail one of three tactics: redirecting the victim to the attacker's own website, manipulating the user's computer while pretending to be the vulnerable website, or transmitting sensitive information, like cookies or other session data, to the attacker.
+
+#### Prevention Measures:
+- Validate all input and sanitise output it before writing to any HTML attributes
+- Try injecting special characters to see if XSS might be possible.
+- Another way to protect against XSS attacks is output encoding. When you display dynamic content on your website (like user comments or messages), you need to encode it properly before rendering it in HTML.
+- Reference: https://www.esecurityplanet.com/endpoint/prevent-xss-attacks/
+
+<h3>Cookie Poisoning: </h3>
+
+#### Identify Vulnerability:
+- OWASP ZAP did not find any alerts. No danger level and CWE ID as a result.
+
+#### Evaluate Vulnerability:
+- **Potential Impact**:
+- Not accessible via this website. However, this check looks for instances when cookie parameters may be changed by examining user input in query string parameters and POST data. This is referred to as a "cookie poisoning" attack, and it can be used if the attacker has the ability to modify the cookie in several ways. Although this might not always be exploitable, allowing URL parameters to set cookie values is typically regarded as problematic. 
+
+#### Prevention Measures:
+- Not accessible via this website. If not, allowing the user to change cookie names and values is the solution to this alert. Make sure semicolons are not utilised as name/value pair delimiters if query string parameters need to be included in cookie values.
+- Using unique and secure session cookies. It's important to ensure that session identifiers are inaccessible to attackers once the session is closed. They should also be randomly generated and hard to crack by using brute force or other means.
+- It is vital to use HTTPS communication to establish secure information flow and reduce the chances of attackers eavesdropping on cookie content.
+- Reference: https://www.techtarget.com/searchsecurity/definition/cookie-poisoning
+  
+
+
+
+
+
+
+
 
 
 
