@@ -164,7 +164,22 @@ It's worth noting that the website doesn't require users to log in or authentica
   Unavailable on the webpage. Making sure that the web server, application server, load balancer, etc. is set up to only serve such material via HTTPS is the solution to this alert, though. Think about 
   putting HTTP Strict Transport Security into practice.
 
-<h3>Potential XSS: </h3>
+<h3>h. Cookie Poisoning: </h3>
+
+#### Identify Vulnerability:
+- OWASP ZAP did not find any alerts. No danger level and CWE ID as a result.
+
+#### Evaluate Vulnerability:
+- **Potential Impact**:
+- Not accessible via this website. However, this check looks for instances when cookie parameters may be changed by examining user input in query string parameters and POST data. This is referred to as a "cookie poisoning" attack, and it can be used if the attacker has the ability to modify the cookie in several ways. Although this might not always be exploitable, allowing URL parameters to set cookie values is typically regarded as problematic. 
+
+#### Prevention Measures:
+- Not accessible via this website. If not, allowing the user to change cookie names and values is the solution to this alert. Make sure semicolons are not utilised as name/value pair delimiters if query string parameters need to be included in cookie values.
+- Using unique and secure session cookies. It's important to ensure that session identifiers are inaccessible to attackers once the session is closed. They should also be randomly generated and hard to crack by using brute force or other means.
+- It is vital to use HTTPS communication to establish secure information flow and reduce the chances of attackers eavesdropping on cookie content.
+- Reference: https://www.techtarget.com/searchsecurity/definition/cookie-poisoning
+
+<h3>i. Potential XSS: </h3>
 
 ![image](https://github.com/alyaqasrina/Innovators-Group/assets/154775061/ddb4491c-1756-43be-b514-b6ba9cc4b93a)
 
@@ -193,21 +208,7 @@ It's worth noting that the website doesn't require users to log in or authentica
 - Another way to protect against XSS attacks is output encoding. When you display dynamic content on your website (like user comments or messages), you need to encode it properly before rendering it in HTML.
 - Reference: https://www.esecurityplanet.com/endpoint/prevent-xss-attacks/
 
-<h3>Cookie Poisoning: </h3>
 
-#### Identify Vulnerability:
-- OWASP ZAP did not find any alerts. No danger level and CWE ID as a result.
-
-#### Evaluate Vulnerability:
-- **Potential Impact**:
-- Not accessible via this website. However, this check looks for instances when cookie parameters may be changed by examining user input in query string parameters and POST data. This is referred to as a "cookie poisoning" attack, and it can be used if the attacker has the ability to modify the cookie in several ways. Although this might not always be exploitable, allowing URL parameters to set cookie values is typically regarded as problematic. 
-
-#### Prevention Measures:
-- Not accessible via this website. If not, allowing the user to change cookie names and values is the solution to this alert. Make sure semicolons are not utilised as name/value pair delimiters if query string parameters need to be included in cookie values.
-- Using unique and secure session cookies. It's important to ensure that session identifiers are inaccessible to attackers once the session is closed. They should also be randomly generated and hard to crack by using brute force or other means.
-- It is vital to use HTTPS communication to establish secure information flow and reduce the chances of attackers eavesdropping on cookie content.
-- Reference: https://www.techtarget.com/searchsecurity/definition/cookie-poisoning
-  
 
 
 
