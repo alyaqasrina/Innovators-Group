@@ -42,7 +42,8 @@ The alerts observed are listed on the table of contents and we will also identif
 # Observation Results
 <h3>a. Server OS and Server-Side Scripting used (Windows or Linux, PHP or ASP.net or JavaScript, etc)
   
- <br> Vulnerability 1: Server Leaks Version Information via "Server" HTTP Response Header Field
+ <br>
+ <br> i. Server Leaks Version Information via "Server" HTTP Response Header Field
 <img width="672" alt="Screenshot 2024-05-09 at 1 28 03 AM" src="https://github.com/alyaqasrina/Innovators-Group/assets/78656130/b0d05f7b-2fb5-4e76-8e88-2016dd4dad6f">
 
 #### Identify Vulnerability:
@@ -74,7 +75,7 @@ The alerts observed are listed on the table of contents and we will also identif
 2. **Regularly Update Server Software**: Ensure your server software is up to date with the latest patches and security fixes to mitigate known vulnerabilities.
 3. **Implement Security Best Practices**: Continuously monitor and apply security best practices recommended by OWASP and other security resources to minimize the risk of exploitation.
 
-### Vulnerability 2: Cross-Domain JavaScript Source File Inclusion
+### Cross-Domain JavaScript Source File Inclusion
 <img width="672" alt="Screenshot 2024-05-09 at 1 42 14 AM" src="https://github.com/alyaqasrina/Innovators-Group/assets/78656130/a198355b-d7c2-4fcd-8b78-8311a69df052">
 
 #### Identify Vulnerability:
@@ -96,7 +97,7 @@ The alerts observed are listed on the table of contents and we will also identif
 3. **Regularly Monitor External Dependencies**: Continuously monitor and update external scripts to mitigate the risk of compromise.
 
 
-<h3>b. Hash Disclosure</h3>
+<h3>c. Hash Disclosure</h3>
 
 Upon conducting a detailed assessment of the Selangor State Government website, we found no instances of hash disclosure. This means that sensitive information like passwords or cryptographic hashes is not exposed. While hash disclosure vulnerabilities can be serious, potentially allowing attackers to access and manipulate sensitive data, the absence of such vulnerabilities here indicates robust security measures.
 
@@ -141,15 +142,76 @@ It's worth noting that the website doesn't require users to log in or authentica
 </form
 ```
 
-<h3>d. Secured Cokkies</h3>
+<h3>d. Secured Cookies</h3>
 
 #### Identify Vulnerability:
-- Identified as Cookie Without Secure Flag <be>
-- Risk: Low <br>
-- CWE ID 614 (Sensitive Cookie in HTTPS Session Without 'Secure' Attribute) <br>  
-- WASC	ID 13 <br>
-- A cookie has been set without the secure flag, which means that the cookie can be accessed via unencrypted connections through Set-Cookie: jtqftknonmu7j3ncqf73knu18a <br>
-<h4> Evaluate: </h4>
+* Identified as Cookie Without Secure Flag 
+* Risk Level: Low 
+* CWE ID 614 (Sensitive Cookie in HTTPS Session Without 'Secure' Attribute)   
+* WASC	ID 13 
+* A cookie has been set without the secure flag, which means that the cookie can be accessed via unencrypted connections through Set-Cookie: jtqftknonmu7j3ncqf73knu18a 
+#### Evaluate Vulnerability
+The secure attribute is an option that can be set by the application server when sending a new cookie to the user within an HTTP Response. The purpose of the secure attribute is to prevent cookies from being observed by unauthorized parties due to the transmission of the cookie in clear text. When not implemented it permits sensitive information like user credentials, session tokens, and other sensitive information to be transmitted across unencrypted HTTP connections, leaving it vulnerable to interception by attackers. Hence, it can result in unauthorized access to sensitive data, session hijacking, malicious activity, and other security breaches.
+
+CWE - 614 in
+
+Related CVE/CWE:
+* CVE-2004-0462: A product does not set the Secure attribute for sensitive cookies in HTTPS sessions, which could cause the user agent to send those cookies in plaintext over an HTTP session with the product. CVSS Score is 2.1
+* CVE-2008-3663: A product does not set the secure flag for the session cookie in an HTTPS session, which can cause the cookie to be sent in HTTP requests and make it easier for remote attackers to capture this cookie. CVSS Score is 5.0
+* CVE-2008-3662: A product does not set the secure flag for the session cookie in an HTTPS session, which can cause the cookie to be sent in HTTP requests and make it easier for remote attackers to capture this cookie. CVSS Score is 5.0
+* CVE-2008-0128: A product does not set the secure flag for a cookie in an HTTPS session, which can cause the cookie to be sent in HTTP requests and make it easier for remote attackers to capture this cookie. CVSS Score is 5.0
+
+#### Prevent Vulnerability:
+* The secure flag should be set on all cookies for transmitting sensitive data when accessing content over HTTPS. Suppose cookies are used to transmit session tokens. In that case, areas of the application that are accessed over HTTPS should employ their session handling mechanism, and the session tokens used should never be transmitted over unencrypted communications.
+
+#### References
+* https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html
+* https://cwe.mitre.org/data/definitions/614.html
+* https://portswigger.net/kb/issues/00500200_tls-cookie-without-secure-flag-set
+* https://www.zaproxy.org/docs/alerts/10011/
+
+<h3> e. CSP </h3>
+
+#### Identify Vulnerability
+* CSP: Wildcard Directive <br>
+A wildcard directive is a CSP rule that allows any content source to be loaded by a web application, making it vulnerable to various attacks. <br>
+* script-src unsafe-inline <br>
+The 'script-src' directive specifies valid sources for JavaScript. The 'unsafe-inline' directive allows the use of inline resources, such as inline "<script>" and "<style>" elements, 'javascript' URLs and inline event handlers. This means that any places where a user can inject a script attribute into the website. <br>
+* CSP: style-src unsafe-inline <br>
+It indicates that the website’s Content Security Policy(CSP) allows the use of inline styles, which can be exploited by attackers.<br>
+* Content Security Policy (CSP) Header Not Set <br>
+Without a CSP header, your website is vulnerable to XSS attacks, where an attacker can inject malicious scripts into your web pages and steal sensitive user information or perform unauthorized actions on behalf of the user. <br>
+* Risk level: Medium 
+* CWE ID 639 (Protection Mechanism Failure)   
+* WASC ID 15
+
+#### Evaluate Vulnerability
+Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files. <br>
+
+CWE ID 693 refers to the absence or incorrect use of a protection mechanism that provides sufficient defense against directed attacks against the website. This vulnerability includes three distinct situations which are:
+* A "missing" protection mechanism occurs when the application does not define any mechanism against a certain class of attack.
+* An "insufficient" protection mechanism might provide some defenses - for example, against the most common attacks - but it does not protect against everything that is intended.
+* An "ignored" mechanism occurs when a mechanism is available and in active use within the product, but the developer has not applied it in some code path.
+
+#### Prevent Vulnerability
+* Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.
+* **Deny-All Policy** = Create a CSP that disables all external resources by default. Then, progressively include specific allowances for trusted sources via directives such as script-src and style-src. The "deny-all, then allow" method reduces the attack surface.
+* **Minimize Wildcards ** = While wildcards (*) can seem convenient, they can introduce vulnerabilities. Use them cautiously and only for trusted CDNs (Content Delivery Networks) or subdomains under your control. Consider specific domain names or source hashes for better security.
+
+
+
+#### References
+* https://cwe.mitre.org/data/definitions/693.html
+* https://www.zaproxy.org/docs/alerts/10055-5/
+* https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html
+* https://portswigger.net/web-security/cross-site-scripting/content-security-policy
+
+
+
+
+
+  
+
 
 <h3>g. HTTPS Implementation (TLS/SSL)</h3>
 
