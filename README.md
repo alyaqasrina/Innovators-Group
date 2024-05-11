@@ -186,30 +186,28 @@ Related CVE/CWE:
 #### Identify Vulnerability
 
 Based on (https://www.selangor.gov.my/), there are four CSP-related vulnerabilities found as stated below: 
-
 * **CSP: Wildcard Directive** 
 <img width="500" src="https://github.com/alyaqasrina/Innovators-Group/blob/main/Nana_Images_Innovators/csp%20wildcard.png">
+<img width="635" src="https://github.com/alyaqasrina/Innovators-Group/blob/main/Nana_Images_Innovators/csp%20wildcard%202png.png">
+A wildcard directive is a CSP rule that allows any content source to be loaded by a web application, making it vulnerable to various attacks. <br>
 
-<img width="500" src="]https://github.com/alyaqasrina/Innovators-Group/blob/main/Nana_Images_Innovators/csp%20wildcard%202png.png">
-A wildcard directive is a CSP rule that allows any content source to be loaded by a web application, making it vulnerable to various attacks.
-<br>
-<br>
+
 * **CSP: script-src unsafe-inline**
 <img width="500" src="https://github.com/alyaqasrina/Innovators-Group/blob/main/Nana_Images_Innovators/csp%20script%201.png">
-The 'script-src' directive specifies valid sources for JavaScript. The 'unsafe-inline' directive allows the use of inline resources, such as inline "<script>" and "<style>" elements, 'javascript' URLs and inline event handlers. This means that any places where a user can inject a script attribute into the website. 
-<br>
-<br>
+<img width="635" src="https://github.com/alyaqasrina/Innovators-Group/blob/main/csp%20script%202.png">
+The 'script-src' directive specifies valid sources for JavaScript. The 'unsafe-inline' directive allows the use of inline resources, such as inline "<script>" and "<style>" elements, 'javascript' URLs and inline event handlers. This means that any places where a user can inject a script attribute into the website. <br>
+
 
 * **CSP: style-src unsafe-inline**
 <img width="500" src="https://github.com/alyaqasrina/Innovators-Group/blob/main/Nana_Images_Innovators/csp%20style%201.png">
-It indicates that the website’s Content Security Policy(CSP) allows the use of inline styles, which can be exploited by attackers.
-<br>
-<br>
+<img width="635" src="https://github.com/alyaqasrina/Innovators-Group/blob/main/csp%20style%202.png">
+It indicates that the website’s Content Security Policy(CSP) allows the use of inline styles, which can be exploited by attackers. <br>
+
 
 * **Content Security Policy (CSP) Header Not Set**
 <img width="500" src="https://github.com/alyaqasrina/Innovators-Group/blob/main/Nana_Images_Innovators/csp%20header%201.png">
+<img width="635" src="https://github.com/alyaqasrina/Innovators-Group/blob/main/Nana_Images_Innovators/csp%20header%202.png">
 Without a CSP header, the website is vulnerable to XSS attacks, where an attacker can inject malicious scripts into the web pages and steal sensitive user information or perform unauthorized actions on behalf of the user. <br>
-
 
 * Risk level: Medium 
 * CWE ID 639 (Protection Mechanism Failure)   
@@ -243,6 +241,9 @@ CWE ID 693 refers to the absence or incorrect use of a protection mechanism that
 <h3>f. JS Library</h3>
 
 #### Identify Vulnerability:
+
+<img width="500" src="https://github.com/alyaqasrina/Innovators-Group/blob/main/Nana_Images_Innovators/vulnerable%201.png">
+<img width="635" src="https://github.com/alyaqasrina/Innovators-Group/blob/main/Nana_Images_Innovators/vulnerable%202.png">
 
 * Identified as Vulnerable JS Library 
 * Risk Level: Medium
@@ -345,6 +346,10 @@ Related CVE/CWE:
 - https://portswigger.net/web-security/cross-site-scripting
 
 <h3>j. Information Disclosure</h3>
+
+#### Identify Vulnerability:
+
+
 
 #### Evaluate Vulnerability:
 
