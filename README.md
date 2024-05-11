@@ -149,8 +149,11 @@ It's worth noting that the website doesn't require users to log in or authentica
 <h3>d. Secured Cookies</h3>
 
 #### Identify Vulnerability:
+
+<img width="500" src="https://github.com/alyaqasrina/Innovators-Group/blob/main/Nana_Images_Innovators/secured%20cookies%202.png">
+<img width="600" src="https://github.com/alyaqasrina/Innovators-Group/blob/main/Nana_Images_Innovators/secured%20cookies%201.png">
+
 * Identified as Cookie Without Secure Flag
-  <img width="1005" alt=""C:\Users\qasri\Pictures\Screenshots\secured cookies 1.png"  src="https://github.com/alyaqasrina/Innovators-Group/assets/78656130/4fabe023-1f63-48dd-a83b-84e42e9e7065">
 * Risk Level: Low 
 * CWE ID 614 (Sensitive Cookie in HTTPS Session Without 'Secure' Attribute)   
 * WASC ID 13
@@ -159,7 +162,7 @@ It's worth noting that the website doesn't require users to log in or authentica
   * 	OWASP_2021_A05
   * 	WSTG-V42-SESS-02
 * A cookie has been set without the secure flag, which means that the cookie can be accessed via unencrypted connections through Set-Cookie: tdvu1o9u7a5vuf418l5s7c6nk8
-  
+
 #### Evaluate Vulnerability
 The secure attribute is an option that can be set by the application server when sending a new cookie to the user within an HTTP Response. The purpose of the secure attribute is to prevent cookies from being observed by unauthorized parties due to the transmission of the cookie in clear text. When not implemented it permits sensitive information like user credentials, session tokens, and other sensitive information to be transmitted across unencrypted HTTP connections, leaving it vulnerable to interception by attackers. Hence, it can result in unauthorized access to sensitive data, session hijacking, malicious activity, and other security breaches.
 
@@ -170,7 +173,7 @@ Related CVE/CWE:
 * CVE-2008-0128: A product does not set the secure flag for a cookie in an HTTPS session, which can cause the cookie to be sent in HTTP requests and make it easier for remote attackers to capture this cookie. CVSS Score is 5.0
 
 #### Prevent Vulnerability:
-* The secure flag should be set on all cookies for transmitting sensitive data when accessing content over HTTPS. Suppose cookies are used to transmit session tokens. In that case, areas of the application that are accessed over HTTPS should employ their session handling mechanism, and the session tokens used should never be transmitted over unencrypted communications.
+* The secure flag should be set on all cookies for transmitting sensitive data when accessing content over HTTPS. Suppose cookies are used to transmit session tokens, therefore the areas of the application that are accessed over HTTPS should employ their session handling mechanism, and the session tokens used should never be transmitted over unencrypted communications.
 
 #### References
 * https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html
@@ -183,14 +186,31 @@ Related CVE/CWE:
 #### Identify Vulnerability
 
 Based on (https://www.selangor.gov.my/), there are four CSP-related vulnerabilities found as stated below: 
-* CSP: Wildcard Directive <br>
-A wildcard directive is a CSP rule that allows any content source to be loaded by a web application, making it vulnerable to various attacks. <br>
-* script-src unsafe-inline <br>
-The 'script-src' directive specifies valid sources for JavaScript. The 'unsafe-inline' directive allows the use of inline resources, such as inline "<script>" and "<style>" elements, 'javascript' URLs and inline event handlers. This means that any places where a user can inject a script attribute into the website. <br>
-* CSP: style-src unsafe-inline <br>
-It indicates that the website’s Content Security Policy(CSP) allows the use of inline styles, which can be exploited by attackers.<br>
-* Content Security Policy (CSP) Header Not Set <br>
-Without a CSP header, your website is vulnerable to XSS attacks, where an attacker can inject malicious scripts into your web pages and steal sensitive user information or perform unauthorized actions on behalf of the user. <br>
+
+* **CSP: Wildcard Directive** 
+<img width="500" src="https://github.com/alyaqasrina/Innovators-Group/blob/main/Nana_Images_Innovators/csp%20wildcard.png">
+
+<img width="500" src="]https://github.com/alyaqasrina/Innovators-Group/blob/main/Nana_Images_Innovators/csp%20wildcard%202png.png">
+A wildcard directive is a CSP rule that allows any content source to be loaded by a web application, making it vulnerable to various attacks.
+<br>
+<br>
+* **CSP: script-src unsafe-inline**
+<img width="500" src="https://github.com/alyaqasrina/Innovators-Group/blob/main/Nana_Images_Innovators/csp%20script%201.png">
+The 'script-src' directive specifies valid sources for JavaScript. The 'unsafe-inline' directive allows the use of inline resources, such as inline "<script>" and "<style>" elements, 'javascript' URLs and inline event handlers. This means that any places where a user can inject a script attribute into the website. 
+<br>
+<br>
+
+* **CSP: style-src unsafe-inline**
+<img width="500" src="https://github.com/alyaqasrina/Innovators-Group/blob/main/Nana_Images_Innovators/csp%20style%201.png">
+It indicates that the website’s Content Security Policy(CSP) allows the use of inline styles, which can be exploited by attackers.
+<br>
+<br>
+
+* **Content Security Policy (CSP) Header Not Set**
+<img width="500" src="https://github.com/alyaqasrina/Innovators-Group/blob/main/Nana_Images_Innovators/csp%20header%201.png">
+Without a CSP header, the website is vulnerable to XSS attacks, where an attacker can inject malicious scripts into the web pages and steal sensitive user information or perform unauthorized actions on behalf of the user. <br>
+
+
 * Risk level: Medium 
 * CWE ID 639 (Protection Mechanism Failure)   
 * WASC ID 15
