@@ -149,7 +149,8 @@ It's worth noting that the website doesn't require users to log in or authentica
 <h3>d. Secured Cookies</h3>
 
 #### Identify Vulnerability:
-* Identified as Cookie Without Secure Flag 
+* Identified as Cookie Without Secure Flag
+  <img width="1005" alt=""C:\Users\qasri\Pictures\Screenshots\secured cookies 1.png"  src="https://github.com/alyaqasrina/Innovators-Group/assets/78656130/4fabe023-1f63-48dd-a83b-84e42e9e7065">
 * Risk Level: Low 
 * CWE ID 614 (Sensitive Cookie in HTTPS Session Without 'Secure' Attribute)   
 * WASC ID 13
@@ -157,7 +158,7 @@ It's worth noting that the website doesn't require users to log in or authentica
   * 	OWASP_2017_A06
   * 	OWASP_2021_A05
   * 	WSTG-V42-SESS-02
-* A cookie has been set without the secure flag, which means that the cookie can be accessed via unencrypted connections through Set-Cookie: jtqftknonmu7j3ncqf73knu18a
+* A cookie has been set without the secure flag, which means that the cookie can be accessed via unencrypted connections through Set-Cookie: tdvu1o9u7a5vuf418l5s7c6nk8
   
 #### Evaluate Vulnerability
 The secure attribute is an option that can be set by the application server when sending a new cookie to the user within an HTTP Response. The purpose of the secure attribute is to prevent cookies from being observed by unauthorized parties due to the transmission of the cookie in clear text. When not implemented it permits sensitive information like user credentials, session tokens, and other sensitive information to be transmitted across unencrypted HTTP connections, leaving it vulnerable to interception by attackers. Hence, it can result in unauthorized access to sensitive data, session hijacking, malicious activity, and other security breaches.
