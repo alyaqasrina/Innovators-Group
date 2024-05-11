@@ -349,6 +349,17 @@ Related CVE/CWE:
 
 #### Identify Vulnerability:
 
+![image](https://github.com/alyaqasrina/Innovators-Group/blob/main/Nana_Images_Innovators/info%20disclosure.png)
+* Identified as Information Disclosure - Suspicious Comments
+* Risk Level: Informational
+* CWE ID 200 (Exposure of Sensitive Information to an Unauthorized Actor)
+* WASC ID 13
+* The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.
+* **Alert Tags**
+  * 	CUSTOM_PAYLOADS
+  * 	OWASP_2017_A03
+  * 	OWASP_2021_A01
+  * 	WSTG-V42-INFO-05
 
 
 #### Evaluate Vulnerability:
@@ -362,9 +373,12 @@ Related CVE/CWE:
 
 #### Prevention Measures:
 - **Find the suspicious comments**: An attacker may use these to find vulnerabilities in the web application if they contain private information, debugging information, or other information.
-- **Remove all comments**:Comments that return information that may help an attacker and fix any underlying problems they refer to should be removed.
+- **Remove all comments**: Comments that return information that may help an attacker and fix any underlying problems they refer to should be removed.
 - **Implement strong authentication and authorization controls for APIs**: Use secure protocols like OAuth or API keys to protect data transmission.
-- **Reference**: https://portswigger.net/web-security/information-disclosure
+
+#### Reference
+
+* https://portswigger.net/web-security/information-disclosure
 
 
 
