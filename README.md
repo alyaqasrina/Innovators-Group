@@ -349,7 +349,9 @@ Related CVE/CWE:
 
 #### Identify Vulnerability:
 
-![image](https://github.com/alyaqasrina/Innovators-Group/blob/main/Nana_Images_Innovators/info%20disclosure.png)
+<img width="500" src="https://github.com/alyaqasrina/Innovators-Group/blob/main/Nana_Images_Innovators/info%20disclosure%202.png">
+<img width="635" src="https://github.com/alyaqasrina/Innovators-Group/blob/main/Nana_Images_Innovators/info%20disclosure.png">
+
 * Identified as Information Disclosure - Suspicious Comments
 * Risk Level: Informational
 * CWE ID 200 (Exposure of Sensitive Information to an Unauthorized Actor)
