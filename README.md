@@ -263,30 +263,32 @@ Related CVE/CWE:
 <h3>g. HTTPS Implementation (TLS/SSL)</h3>
 
 #### Identify Vulnerability:
-  + OWASP ZAP does not contain any alerts, and neither can the risk level or CWE ID be found.
+**Description**: OWASP ZAP does not contain any alerts, and neither can the risk level or CWE ID be found.
 
 #### Evaluate Vulnerability:
 - **Potential Impact**:
- Not accessible because this website has a https implementation, which is visible from the website's URL. Nevertheless, content that was originally seen using HTTPS (i.e., SSL/TLS encrypted) can also be viewed through HTTP (unencrypted).
+- Not accessible because this website has a https implementation, which is visible from the website's URL. Nevertheless, content that was originally seen using HTTPS (i.e., SSL/TLS encrypted) can also be viewed through HTTP (unencrypted).
 
 #### Prevention Measures:
-  Unavailable on the webpage. Making sure that the web server, application server, load balancer, etc. is set up to only serve such material via HTTPS is the solution to this alert, though. Think about 
+-  Unavailable on the webpage. Making sure that the web server, application server, load balancer, etc. is set up to only serve such material via HTTPS is the solution to this alert, though. Think about 
   putting HTTP Strict Transport Security into practice.
+- **Reference**: https://www.encryptionconsulting.com/detailed-guide-to-preventing-ssl-stripping/
 
 <h3>h. Cookie Poisoning: </h3>
 
 #### Identify Vulnerability:
-- OWASP ZAP did not find any alerts. No danger level and CWE ID as a result.
+- **Description**: OWASP ZAP did not find any alerts. No danger level and CWE ID as a result.
 
 #### Evaluate Vulnerability:
 - **Potential Impact**:
 - Not accessible via this website. However, this check looks for instances when cookie parameters may be changed by examining user input in query string parameters and POST data. This is referred to as a "cookie poisoning" attack, and it can be used if the attacker has the ability to modify the cookie in several ways. Although this might not always be exploitable, allowing URL parameters to set cookie values is typically regarded as problematic. 
 
 #### Prevention Measures:
-- Not accessible via this website. If not, allowing the user to change cookie names and values is the solution to this alert. Make sure semicolons are not utilised as name/value pair delimiters if query string parameters need to be included in cookie values.
-- Using unique and secure session cookies. It's important to ensure that session identifiers are inaccessible to attackers once the session is closed. They should also be randomly generated and hard to crack by using brute force or other means.
-- It is vital to use HTTPS communication to establish secure information flow and reduce the chances of attackers eavesdropping on cookie content.
-- Reference: https://www.techtarget.com/searchsecurity/definition/cookie-poisoning
+- **Not allowing to change cookie values**: The user should not be able to change cookie names and values. Make sure semicolons are not utilised as name/value pair delimiters if query string parameters need to be included in cookie values.
+- **Using unique and secure session cookies**: It's important to ensure that session identifiers are inaccessible to attackers once the session is closed. They should also be randomly generated and hard to crack by using brute force or other means.
+- **Using HTTPS**: It is vital to use HTTPS communication to establish secure information flow and reduce the chances of attackers eavesdropping on cookie content.
+- **Reference**: https://www.techtarget.com/searchsecurity/definition/cookie-poisoning
+- https://www.internetsecurity.tips/what-is-cookie-poisoning-attack-protection-and-prevention/
 
 <h3>i. Potential XSS: </h3>
 
@@ -294,12 +296,13 @@ Related CVE/CWE:
 
 
 #### Identify Vulnerability:
+![image](https://github.com/alyaqasrina/Innovators-Group/assets/154775061/b0fb3b5b-eb3f-445c-a3c4-2baa7ffb7b64)
 
-* User Controllable HTML Element Attribute (Potential XSS)
-  * URL: https://www.selangor.gov.my/index.php/system/get_language_key
-  * Risk level: Informational
-  * CWE ID: 20
-  * User-controlled HTML attribute values were found
+- **Description**: User Controllable HTML Element Attribute (Potential XSS)
+- **URL**: https://www.selangor.gov.my/index.php/system/get_language_key
+- **Risk Assessment**: Informational
+- **Other Info**: CWE ID: 20
+- **Evidence**: User-controlled HTML attribute values were found
   * **Alert Tags**:
       * OWASP_2021_A03
       * OWASP_2017_A01
@@ -309,14 +312,34 @@ Related CVE/CWE:
 - This check looks for places where particular HTML attribute values might be altered by examining user-supplied input in query string arguments and POST data.
 - This offers cross-site scripting (XSS) hotspot identification; a security analyst will need to examine this further to assess its exploitability.
 - Although there are several XSS-based attacks, they usually entail one of three tactics: redirecting the victim to the attacker's own website, manipulating the user's computer while pretending to be the vulnerable website, or transmitting sensitive information, like cookies or other session data, to the attacker.
+- If the compromised user has elevated privileges within the application, then the impact will generally be critical, allowing the attacker to take full control of the vulnerable application and compromise all users and their data.
 
 #### Prevention Measures:
-- Validate all input and sanitise output it before writing to any HTML attributes
-- Try injecting special characters to see if XSS might be possible.
-- Another way to protect against XSS attacks is output encoding. When you display dynamic content on your website (like user comments or messages), you need to encode it properly before rendering it in HTML.
-- Reference: https://www.esecurityplanet.com/endpoint/prevent-xss-attacks/
+- **Validate all input**: Validate and sanitise output it before writing to any HTML attributes
+- **Injecting special characters**: Inject them to see if XSS might be possible.
+- **Output encoding**. When you display dynamic content on your website (like user comments or messages), you need to encode it properly before rendering it in HTML.
+- **Use Content Security Policy (CSP)**: To reduce the severity of any XSS vulnerabilities that still occur.
+- **Reference**: https://www.esecurityplanet.com/endpoint/prevent-xss-attacks/
+- https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html
+- https://portswigger.net/web-security/cross-site-scripting
 
 <h3>j. Information Disclosure</h3>
+
+#### Evaluate Vulnerability:
+
+![image](https://github.com/alyaqasrina/Innovators-Group/assets/154775061/55779ff0-7bf4-49ad-9b49-d365b486e6ca)
+![image](https://github.com/alyaqasrina/Innovators-Group/assets/154775061/a46bd373-1505-4d05-9ad1-0ca996ff17e8)
+
+
+- One vulnerability that might compromise the security of sensitive data in a web application is information leaking. This scenario has been identified as having a vulnerability called "Information Disclosure - Suspicious Comments." It refers to source code remarks that could give an attacker access to private data. In certain situations, these dubious remarks could help an attacker get information. Source code fragments and comments can provide more information about the web application to the attacker.
+- Failing to disable debugging and diagnostic features can sometimes provide attackers with useful tools to help them obtain sensitive information. Default configurations can also leave websites vulnerable.
+
+#### Prevention Measures:
+- **Find the suspicious comments**: An attacker may use these to find vulnerabilities in the web application if they contain private information, debugging information, or other information.
+- **Remove all comments**:Comments that return information that may help an attacker and fix any underlying problems they refer to should be removed.
+- **Implement strong authentication and authorization controls for APIs**: Use secure protocols like OAuth or API keys to protect data transmission.
+- **Reference**: https://portswigger.net/web-security/information-disclosure
+
 
 
 
