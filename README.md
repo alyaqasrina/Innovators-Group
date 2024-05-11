@@ -21,20 +21,22 @@ Innovators
      * Server OS and Server-Side Scripting used (Windows or Linux, PHP or ASP.net or JavaScript, etc)
      * Hash Disclosure
      * CSRF
-     *
+     * Information Disclosure
+       
 # Table of Contents
 1. Description
-2. Observation Results
-    i. Server OS and Server-Side Scripting used (Windows or Linux, PHP or ASP.net or JavaScript, etc)
-    ii. Hash Disclosure
-    iii. CSRF
-Secured Cookies
-CSP
-JS Library
-HTTPS implementation (TLS/SSL)
-Cookie Poisoning
-Potential XSS
-Information Disclosure
+2. Observation Results from
+    a. Server OS and Server-Side Scripting used (Windows or Linux, PHP or ASP.net or JavaScript, etc)
+    b. Hash Disclosure
+    c. CSRF
+    d. Secured Cookies
+    e. CSP
+    f. JS Library
+    g. HTTPS implementation (TLS/SSL)
+    h. Cookie Poisoning
+    i. Potential XSS
+    j. Information Disclosure
+   
 # Description
 Our assigned web application is the Selangor State Government (SUK) URL (https://www.selangor.gov.my/). In this case study, our group will look into the vulnerabilities of the web application by scanning the website using OWASP ZAP using both the automated scan and manual explore. We will mainly be focusing on automated scan due to the large amount of links and webpages the site has.
 
@@ -101,7 +103,7 @@ The alerts observed are listed on the table of contents and we will also identif
 
 Upon conducting a detailed assessment of the Selangor State Government website, we found no instances of hash disclosure. This means that sensitive information like passwords or cryptographic hashes is not exposed. While hash disclosure vulnerabilities can be serious, potentially allowing attackers to access and manipulate sensitive data, the absence of such vulnerabilities here indicates robust security measures.
 
-### lake of authentication 
+### lack of authentication 
 It's worth noting that the website doesn't require users to log in or authenticate themselves. While authentication is crucial for verifying users' identities and controlling access to sensitive data, its absence here suggests that the website mainly serves as an informational platform. This might increase concerns about data security, but for a public-facing website providing general information, the lack of authentication isn't necessarily a flaw.
 
 <h3>c. CSRF</h3>
@@ -149,7 +151,8 @@ It's worth noting that the website doesn't require users to log in or authentica
 * Risk Level: Low 
 * CWE ID 614 (Sensitive Cookie in HTTPS Session Without 'Secure' Attribute)   
 * WASC	ID 13 
-* A cookie has been set without the secure flag, which means that the cookie can be accessed via unencrypted connections through Set-Cookie: jtqftknonmu7j3ncqf73knu18a 
+* A cookie has been set without the secure flag, which means that the cookie can be accessed via unencrypted connections through Set-Cookie: jtqftknonmu7j3ncqf73knu18a
+  
 #### Evaluate Vulnerability
 The secure attribute is an option that can be set by the application server when sending a new cookie to the user within an HTTP Response. The purpose of the secure attribute is to prevent cookies from being observed by unauthorized parties due to the transmission of the cookie in clear text. When not implemented it permits sensitive information like user credentials, session tokens, and other sensitive information to be transmitted across unencrypted HTTP connections, leaving it vulnerable to interception by attackers. Hence, it can result in unauthorized access to sensitive data, session hijacking, malicious activity, and other security breaches.
 
@@ -173,6 +176,8 @@ Related CVE/CWE:
 <h3> e. CSP </h3>
 
 #### Identify Vulnerability
+
+Based on (https://www.selangor.gov.my/), there are four CSP-related vulnerabilities found as stated below: 
 * CSP: Wildcard Directive <br>
 A wildcard directive is a CSP rule that allows any content source to be loaded by a web application, making it vulnerable to various attacks. <br>
 * script-src unsafe-inline <br>
@@ -194,18 +199,27 @@ CWE ID 693 refers to the absence or incorrect use of a protection mechanism that
 * An "ignored" mechanism occurs when a mechanism is available and in active use within the product, but the developer has not applied it in some code path.
 
 #### Prevent Vulnerability
-* Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.
+
 * **Deny-All Policy** = Create a CSP that disables all external resources by default. Then, progressively include specific allowances for trusted sources via directives such as script-src and style-src. The "deny-all, then allow" method reduces the attack surface.
-* **Minimize Wildcards ** = While wildcards (*) can seem convenient, they can introduce vulnerabilities. Use them cautiously and only for trusted CDNs (Content Delivery Networks) or subdomains under your control. Consider specific domain names or source hashes for better security.
-
-
+* **Minimize Wildcards** = While wildcards (*) can seem convenient, they can introduce vulnerabilities. Use them cautiously and only for trusted CDNs (Content Delivery Networks) or subdomains under your control. Consider specific domain names or source hashes for better security.
+* **Report-Only Mode** = Before deploying a finalized CSP, implement it in report-only mode. This allows the browser to identify and report any blocked requests in the console without impacting website functionality. You can then analyze the blocked requests and refine your CSP accordingly.
+* Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.
 
 #### References
 * https://cwe.mitre.org/data/definitions/693.html
 * https://www.zaproxy.org/docs/alerts/10055-5/
 * https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html
 * https://portswigger.net/web-security/cross-site-scripting/content-security-policy
+* https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html
 
+<h3>f. JS Library</h3>
+
+#### Identify Vulnerability:
+
+* Identified as Vulnerable JS Library 
+* Risk Level: Medium
+* CWE ID 829 (Inclusion of Functionality from Untrusted Control Sphere)   
+* WASC	ID 13 
 
 
 
