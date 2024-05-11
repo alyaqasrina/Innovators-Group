@@ -18,33 +18,35 @@ Innovators
      * HTTPS Implementation (TLS/SSL) 
      * Information Disclosure
 3. Yaya ali (1928095)
+   * Identify, evaluate and prevent of:
      * Server OS and Server-Side Scripting used (Windows or Linux, PHP or ASP.net or JavaScript, etc)
      * Hash Disclosure
      * CSRF
      * Information Disclosure
        
 # Table of Contents
+
 1. Description
-2. Observation Results from
-    a. Server OS and Server-Side Scripting used (Windows or Linux, PHP or ASP.net or JavaScript, etc)
-    b. Hash Disclosure
-    c. CSRF
-    d. Secured Cookies
-    e. CSP
-    f. JS Library
-    g. HTTPS implementation (TLS/SSL)
-    h. Cookie Poisoning
-    i. Potential XSS
-    j. Information Disclosure
+2. Observation Results from:
+   * Server OS and Server-Side Scripting used (Windows or Linux, PHP or ASP.net or JavaScript, etc)
+   * Hash Disclosure
+   * CSRF
+   * Secured Cookies
+   * CSP
+   * JS Library
+   * HTTPS implementation (TLS/SSL)
+   * Cookie Poisoning
+   * Potential XSS
+   * Information Disclosure
    
 # Description
-Our assigned web application is the Selangor State Government (SUK) URL (https://www.selangor.gov.my/). In this case study, our group will look into the vulnerabilities of the web application by scanning the website using OWASP ZAP using both the automated scan and manual explore. We will mainly be focusing on automated scan due to the large amount of links and webpages the site has.
+Our given web application is the  the Selangor State Government (SUK) (https://www.selangor.gov.my/). In this case study, our group is going to evaluate the web application's vulnerabilities by scanning the website with OWASP ZAP, both automatically and manually. We will primarily focus on automated scanning due to the site's enormous number of links and sites.
 
-The alerts observed are listed on the table of contents and we will also identify the level of risk for each alert and additional information on the classification of threats (CWE or CVE).
+The observed alerts are presented in the table of contents, and we will additionally show the level of risk for each alert as well as additional threat classification information (CWE/CVE).
+
 # Observation Results
-<h3>a. Server OS and Server-Side Scripting used (Windows or Linux, PHP or ASP.net or JavaScript, etc)
-  
- <br>
+
+<h3>a. Server OS and Server-Side Scripting used (Windows or Linux, PHP or ASP.net or JavaScript, etc)</h3>
  <br> i. Server Leaks Version Information via "Server" HTTP Response Header Field
 <img width="672" alt="Screenshot 2024-05-09 at 1 28 03 AM" src="https://github.com/alyaqasrina/Innovators-Group/assets/78656130/b0d05f7b-2fb5-4e76-8e88-2016dd4dad6f">
 
@@ -150,13 +152,15 @@ It's worth noting that the website doesn't require users to log in or authentica
 * Identified as Cookie Without Secure Flag 
 * Risk Level: Low 
 * CWE ID 614 (Sensitive Cookie in HTTPS Session Without 'Secure' Attribute)   
-* WASC	ID 13 
+* WASC ID 13
+* **Alert Tags**
+  * 	OWASP_2017_A06
+  * 	OWASP_2021_A05
+  * 	WSTG-V42-SESS-02
 * A cookie has been set without the secure flag, which means that the cookie can be accessed via unencrypted connections through Set-Cookie: jtqftknonmu7j3ncqf73knu18a
   
 #### Evaluate Vulnerability
 The secure attribute is an option that can be set by the application server when sending a new cookie to the user within an HTTP Response. The purpose of the secure attribute is to prevent cookies from being observed by unauthorized parties due to the transmission of the cookie in clear text. When not implemented it permits sensitive information like user credentials, session tokens, and other sensitive information to be transmitted across unencrypted HTTP connections, leaving it vulnerable to interception by attackers. Hence, it can result in unauthorized access to sensitive data, session hijacking, malicious activity, and other security breaches.
-
-CWE - 614 in
 
 Related CVE/CWE:
 * CVE-2004-0462: A product does not set the Secure attribute for sensitive cookies in HTTPS sessions, which could cause the user agent to send those cookies in plaintext over an HTTP session with the product. CVSS Score is 2.1
@@ -189,6 +193,9 @@ Without a CSP header, your website is vulnerable to XSS attacks, where an attack
 * Risk level: Medium 
 * CWE ID 639 (Protection Mechanism Failure)   
 * WASC ID 15
+* **Alert Tags**
+  * OWASP_2017_A06
+  * OWASP_2021_A05
 
 #### Evaluate Vulnerability
 Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files. <br>
@@ -220,6 +227,9 @@ CWE ID 693 refers to the absence or incorrect use of a protection mechanism that
 * Risk Level: Medium
 * CWE ID 829 (Inclusion of Functionality from Untrusted Control Sphere)   
 * The identified library ExampleLibrary, version x.y.z is vulnerable.
+* **Alert Tags**
+  * OWASP_2017_A09
+  * OWASP_2021_A06
 
 #### Evaluate Vulnerability:
 
