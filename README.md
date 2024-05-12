@@ -329,6 +329,10 @@ Related CVE/CWE:
 - **Risk Assessment**: Informational
 - **Other Info**: CWE ID: 20
 - **Evidence**: User-controlled HTML attribute values were found
+- ![image](https://github.com/alyaqasrina/Innovators-Group/assets/154775061/15665b72-5284-4e66-98ee-d344fee87e70)
+- ![image](https://github.com/alyaqasrina/Innovators-Group/assets/154775061/03ad370a-1542-4e24-b545-672dd490be02)
+
+
   * **Alert Tags**:
       * OWASP_2021_A03
       * OWASP_2017_A01
