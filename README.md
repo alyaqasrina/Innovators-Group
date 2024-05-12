@@ -79,7 +79,7 @@ The observed alerts are presented in the table of contents, and we will addition
 2. **Regularly Update Server Software**: Ensure your server software is up to date with the latest patches and security fixes to mitigate known vulnerabilities.
 3. **Implement Security Best Practices**: Continuously monitor and apply security best practices recommended by OWASP and other security resources to minimize the risk of exploitation.
 
-### Cross-Domain JavaScript Source File Inclusion
+<br> ii. Cross-Domain JavaScript Source File Inclusion
 <img width="672" alt="Screenshot 2024-05-09 at 1 42 14 AM" src="https://github.com/alyaqasrina/Innovators-Group/assets/78656130/a198355b-d7c2-4fcd-8b78-8311a69df052">
 
 #### Identify Vulnerability:
@@ -101,7 +101,7 @@ The observed alerts are presented in the table of contents, and we will addition
 3. **Regularly Monitor External Dependencies**: Continuously monitor and update external scripts to mitigate the risk of compromise.
 
 
-<h3>c. Hash Disclosure</h3>
+<h3>b. Hash Disclosure</h3>
 
 Upon conducting a detailed assessment of the Selangor State Government website, we found no instances of hash disclosure. This means that sensitive information like passwords or cryptographic hashes is not exposed. While hash disclosure vulnerabilities can be serious, potentially allowing attackers to access and manipulate sensitive data, the absence of such vulnerabilities here indicates robust security measures.
 
@@ -113,7 +113,7 @@ It's worth noting that the website doesn't require users to log in or authentica
 ### Vulnerability : Lack of Anti-CSRF Tokens
 <img width="1005" alt="Screenshot 2024-05-09 at 2 06 47 AM" src="https://github.com/alyaqasrina/Innovators-Group/assets/78656130/4fabe023-1f63-48dd-a83b-84e42e9e7065">
 
-#### Identification:
+#### Identify Vulnerability:
 - **Description**: The absence of Anti-CSRF tokens in an HTML submission form was detected.
 - **Evidence**: An HTML form with the action `/index.php/pages/module_search` lacks Anti-CSRF tokens, making it vulnerable to CSRF attacks.
 - **Risk Assessment**: The risk associated with this vulnerability is considered medium, with confidence rated as low. CSRF attacks can manipulate authenticated users into executing unintended actions.
@@ -121,14 +121,14 @@ It's worth noting that the website doesn't require users to log in or authentica
 - **Input Vector**: CSRF attacks can exploit forms lacking Anti-CSRF tokens.
 - **Other Information**: The Common Weakness Enumeration (CWE) ID for this vulnerability is 352, and the Web Application Security Consortium (WASC) ID is 9.
 
-#### Evaluation:
+#### Evaluate Vulnerability:
 - **Potential Impact**: Without Anti-CSRF tokens, attackers can perform unauthorized actions on behalf of authenticated users.
 - **Recommendation**: Mitigate this vulnerability by integrating Anti-CSRF tokens into HTML forms. Utilize established libraries or frameworks like OWASP CSRFGuard to enhance protection. Ensure thorough scrutiny for cross-site scripting (XSS) vulnerabilities, as they can circumvent CSRF defenses.
 - **References**:
   - [OWASP CSRF Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html)
   - [CWE-352: Cross-Site Request Forgery (CSRF)](https://cwe.mitre.org/data/definitions/352.html)
 
-#### Prevention Measures:
+#### Prevent Vulnerability:
 1. **Architecture and Design Phase**:
    - Employ trusted libraries or frameworks like OWASP CSRFGuard to manage CSRF vulnerabilities.
    - Implement the generation and validation of unique nonces for each form submission to mitigate CSRF attacks.
@@ -291,10 +291,12 @@ Related CVE/CWE:
 - **Potential Impact**:
 - Not accessible because this website has a https implementation, which is visible from the website's URL. Nevertheless, content that was originally seen using HTTPS (i.e., SSL/TLS encrypted) can also be viewed through HTTP (unencrypted).
 
-#### Prevention Measures:
+#### Prevent Vulnerability:
 -  Unavailable on the webpage. Making sure that the web server, application server, load balancer, etc. is set up to only serve such material via HTTPS is the solution to this alert, though. Think about 
   putting HTTP Strict Transport Security into practice.
-- **Reference**: https://www.encryptionconsulting.com/detailed-guide-to-preventing-ssl-stripping/
+
+#### References
+- https://www.encryptionconsulting.com/detailed-guide-to-preventing-ssl-stripping/
 
 <h3>h. Cookie Poisoning: </h3>
 
@@ -305,11 +307,13 @@ Related CVE/CWE:
 - **Potential Impact**:
 - Not accessible via this website. However, this check looks for instances when cookie parameters may be changed by examining user input in query string parameters and POST data. This is referred to as a "cookie poisoning" attack, and it can be used if the attacker has the ability to modify the cookie in several ways. Although this might not always be exploitable, allowing URL parameters to set cookie values is typically regarded as problematic. 
 
-#### Prevention Measures:
+#### Prevent Vulnerability:
 - **Not allowing to change cookie values**: The user should not be able to change cookie names and values. Make sure semicolons are not utilised as name/value pair delimiters if query string parameters need to be included in cookie values.
 - **Using unique and secure session cookies**: It's important to ensure that session identifiers are inaccessible to attackers once the session is closed. They should also be randomly generated and hard to crack by using brute force or other means.
 - **Using HTTPS**: It is vital to use HTTPS communication to establish secure information flow and reduce the chances of attackers eavesdropping on cookie content.
-- **Reference**: https://www.techtarget.com/searchsecurity/definition/cookie-poisoning
+  
+#### References
+- https://www.techtarget.com/searchsecurity/definition/cookie-poisoning
 - https://www.internetsecurity.tips/what-is-cookie-poisoning-attack-protection-and-prevention/
 
 <h3>i. Potential XSS: </h3>
@@ -336,12 +340,14 @@ Related CVE/CWE:
 - Although there are several XSS-based attacks, they usually entail one of three tactics: redirecting the victim to the attacker's own website, manipulating the user's computer while pretending to be the vulnerable website, or transmitting sensitive information, like cookies or other session data, to the attacker.
 - If the compromised user has elevated privileges within the application, then the impact will generally be critical, allowing the attacker to take full control of the vulnerable application and compromise all users and their data.
 
-#### Prevention Measures:
+#### Prevent Vulnerability:
 - **Validate all input**: Validate and sanitise output it before writing to any HTML attributes
 - **Injecting special characters**: Inject them to see if XSS might be possible.
 - **Output encoding**. When you display dynamic content on your website (like user comments or messages), you need to encode it properly before rendering it in HTML.
 - **Use Content Security Policy (CSP)**: To reduce the severity of any XSS vulnerabilities that still occur.
-- **Reference**: https://www.esecurityplanet.com/endpoint/prevent-xss-attacks/
+
+#### References
+- https://www.esecurityplanet.com/endpoint/prevent-xss-attacks/
 - https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html
 - https://portswigger.net/web-security/cross-site-scripting
 
@@ -370,21 +376,22 @@ Related CVE/CWE:
 ![image](https://github.com/alyaqasrina/Innovators-Group/assets/154775061/a46bd373-1505-4d05-9ad1-0ca996ff17e8)
 
 
-- One vulnerability that might compromise the security of sensitive data in a web application is information leaking. This scenario has been identified as having a vulnerability called "Information Disclosure - Suspicious Comments." It refers to source code remarks that could give an attacker access to private data. In certain situations, these dubious remarks could help an attacker get information. Source code fragments and comments can provide more information about the web application to the attacker.
-- Failing to disable debugging and diagnostic features can sometimes provide attackers with useful tools to help them obtain sensitive information. Default configurations can also leave websites vulnerable.
+- Web applications can be subject to information breaches through unsuspected methods such as code comments (known as "Information Disclosure - Suspicious Comments") or development features. It refers to source code remarks that could give an attacker access to information about the application's internal workings. This knowledge can be used to develop attacks that bypass security measures, exploit flaws, or obtain unauthorized access to sensitive data. 
+- Failing to disable debugging and diagnostic features can sometimes provide attackers with useful tools to help them obtain sensitive information.
+- Even default configurations, which are generally designed to be user-friendly, might introduce vulnerabilities if these functionalities are mistakenly enabled.
 
-#### Prevention Measures:
+#### Prevent Vulnerabiity:
 - **Find the suspicious comments**: An attacker may use these to find vulnerabilities in the web application if they contain private information, debugging information, or other information.
 - **Remove all comments**: Comments that return information that may help an attacker and fix any underlying problems they refer to should be removed.
 - **Implement strong authentication and authorization controls for APIs**: Use secure protocols like OAuth or API keys to protect data transmission.
 
-#### Reference
+#### References
 
 * https://portswigger.net/web-security/information-disclosure
 
 # Weekly Progress Report 
 
-[Weekly Progress Report](https://github.com/alyaqasrina/Innovators-Group/blob/main/Weekly%20Progress%20Report)
+[Weekly Progress Report](https://github.com/alyaqasrina/Innovators-Group/blob/main/Weekly%20Progress%20Report.pdf)
 
 
 
