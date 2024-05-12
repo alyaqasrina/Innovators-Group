@@ -40,7 +40,9 @@ Innovators
    * Information Disclosure
    
 # Description
-Our given web application is the Selangor State Government (SUK) (https://www.selangor.gov.my/). In this case study, our group is going to evaluate the web application's vulnerabilities by scanning the website with OWASP ZAP, both automatically and manually. We will primarily focus on automated scanning due to the site's enormous number of links and sites.
+Our given web application is the Selangor State Government (SUK) (https://www.selangor.gov.my/). The Selangor State Government website serves as a centralized platform for residents, businesses, and stakeholders to interact with government services, stay informed about state affairs, details initiatives by the state government, and engage in community activities.  It also provides general information about the state including its history, symbols and official songs. Hence, the website plays a crucial role in promoting digital governance and enhancing public access to government resources and services.
+
+In this case study, our group is going to evaluate the web application's vulnerabilities by scanning the website with OWASP ZAP, both automatically and manually. We will primarily focus on automated scanning due to the site's enormous number of links and sites.
 
 The observed alerts are presented in the table of contents, and we will additionally show the level of risk for each alert as well as additional threat classification information (CWE/CVE).
 
