@@ -397,7 +397,7 @@ Related CVE/CWE:
 
 # Weekly Progress Report 
 
-[Weekly Progress Report](https://github.com/alyaqasrina/Innovators-Group/blob/main/Weekly%20Progress%20Report.pdf)
+[Weekly Progress Report](https://github.com/alyaqasrina/Innovators-Group/blob/main/Weekly%20Progress%20Report%20.pdf)
 
 
 
