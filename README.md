@@ -382,6 +382,9 @@ Related CVE/CWE:
 
 * https://portswigger.net/web-security/information-disclosure
 
+# Weekly Progress Report 
+
+[Weekly Progress Report](https://github.com/alyaqasrina/Innovators-Group/blob/main/Weekly%20Progress%20Report)
 
 
 
